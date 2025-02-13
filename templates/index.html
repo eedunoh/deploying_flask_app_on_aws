@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Image and Metadata</title>
+    <script>
+        let metadata = {};
+
+        function startMetadataInput() {
+            metadata = {}; // Reset metadata
+
+            let description = prompt("Enter description:");
+            if (description) {
+                metadata["description"] = description;
+            }
+
+            let adminName = prompt("Enter admin name:");
+            if (adminName) {
+                metadata["admin name"] = adminName;
+            }
+
+            // Add current date and time
+            let now = new Date();
+            metadata["time created"] = now.toISOString().slice(0, 19).replace("T", " "); // Format: YYYY-MM-DD HH:MM:SS
+
+            // Show preview of entered metadata
+            document.getElementById("metadataPreview").innerText = JSON.stringify(metadata, null, 2);
+        }
+
+        function uploadFile() {
+            let fileInput = document.getElementById("file");
+            let file = fileInput.files[0];
+
+            if (!file) {
+                alert("Please select an image file first.");
+                return;
+            }
+
+            let formData = new FormData();
+            formData.append("file", file);
+
+            // Attach metadata to FormData
+            for (let key in metadata) {
+                formData.append(key, metadata[key]);
+            }
+
+            fetch("/upload", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => alert(data))
+            .catch(error => alert("Error uploading: " + error));
+        }
+    </script>
+</head>
+<body>
+    <h1>Upload Image and Add Metadata</h1>
+    
+    <input type="file" id="file">
+    <button onclick="startMetadataInput()">Add Metadata</button>
+    <button onclick="uploadFile()">Upload</button>
+
+    <h3>Metadata Preview:</h3>
+    <pre id="metadataPreview"></pre>
+</body>
+</html>
