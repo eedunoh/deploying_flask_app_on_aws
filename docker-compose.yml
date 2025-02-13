@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  flask-app:
+    build: .
+    ports:
+      - "80:80"
+    environment:
+      - S3_BUCKET=flask_app_static_store
+      - DYNAMODB_TABLE=flask_app_metadata
+    volumes:
+      - .:/app
+    restart: always
