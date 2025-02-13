@@ -6,6 +6,8 @@ services:
     ports:
       - "80:80"
     environment:
+      - AWS_REGION=eu-north-1
+      - AWS_DEFAULT_REGION=eu-north-1
       - S3_BUCKET=flask_app_static_store
       - DYNAMODB_TABLE=flask_app_metadata
     volumes:
