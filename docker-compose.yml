@@ -8,8 +8,6 @@ services:
     environment:
       - AWS_REGION=eu-north-1
       - AWS_DEFAULT_REGION=eu-north-1
-      - S3_BUCKET=flask_app_static_store
+      - S3_BUCKET=flask-app-static-store
       - DYNAMODB_TABLE=flask_app_metadata
-    volumes:
-      - .:/app
     restart: always

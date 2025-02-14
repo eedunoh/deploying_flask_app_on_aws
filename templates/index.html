@@ -2,6 +2,20 @@
 <html>
 <head>
     <title>Upload Image and Metadata</title>
+</head>
+<body>
+    <div style="max-width: 500px; margin: 50px auto; text-align: center; padding: 20px; border: 2px solid #333; border-radius: 10px; box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);">
+        <h1 style="color: #444;">Upload Image and Add Metadata</h1>
+        
+        <input type="file" id="file" style="margin: 10px; padding: 5px;">
+        <br>
+        <button onclick="startMetadataInput()" style="margin: 5px; padding: 10px; border: none; background: #4CAF50; color: white; border-radius: 5px; cursor: pointer;">Add Metadata</button>
+        <button onclick="uploadFile()" style="margin: 5px; padding: 10px; border: none; background: #008CBA; color: white; border-radius: 5px; cursor: pointer;">Upload</button>
+        
+        <h3 style="color: #555; margin-top: 20px;">Metadata Preview:</h3>
+        <pre id="metadataPreview" style="background: #f4f4f4; padding: 10px; border-radius: 5px; text-align: left; max-height: 150px; overflow-y: auto;"></pre>
+    </div>
+
     <script>
         let metadata = {};
 
@@ -52,15 +66,5 @@
             .catch(error => alert("Error uploading: " + error));
         }
     </script>
-</head>
-<body>
-    <h1>Upload Image and Add Metadata</h1>
-    
-    <input type="file" id="file">
-    <button onclick="startMetadataInput()">Add Metadata</button>
-    <button onclick="uploadFile()">Upload</button>
-
-    <h3>Metadata Preview:</h3>
-    <pre id="metadataPreview"></pre>
 </body>
 </html>
