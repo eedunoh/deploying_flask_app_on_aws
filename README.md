@@ -1,2 +1,1 @@
-# deploying_flask_app_on_aws
-This repo contains files needed to deploy a basic flask app on AWS
+This repository contains Python, HTML, and necessary files for a cloud project on deploying a highly available, scalable, and secure Flask web application on AWS with Auto Scaling Group, Application Load Balancer, and managed DynamoDB & S3 storage
